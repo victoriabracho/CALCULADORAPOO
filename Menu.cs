@@ -55,7 +55,44 @@ namespace CalculadoraPOO
 
             operaciones = new Operaciones (a,b,flag);
         }
-        public void Sumar()//PERMITE SUMAR
+
+        public void Sumar()
+        {
+            RealizarOperacion(operaciones.Sumar);
+        }
+
+        public void Restar()
+        {
+            RealizarOperacion(operaciones.Restar);
+        }
+
+        public void Multiplicar()
+        {
+            RealizarOperacion (operaciones.Multiplicar);
+        }
+
+        public void Dividir()
+        {
+            RealizarOperacion(operaciones.Dividir);
+        }
+
+        public void RealizarOperacion(Func<string> action)//PERMITE REALIZAR CUALQUIER ACCION
+        {
+            if (operaciones.Validar2() == 0)
+            {
+                Console.WriteLine(operaciones.ValidarMsj());
+                Console.WriteLine("Presione cualquier tecla para continuar.");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine(action.Invoke());
+                Console.WriteLine("Presione cualquier tecla para continuar.");
+                Console.ReadLine();
+            }
+        }
+
+        /*public void Sumar()//PERMITE SUMAR
         {
             if (operaciones.Validar2() == 0)
             {
@@ -117,7 +154,7 @@ namespace CalculadoraPOO
                 Console.ReadLine();
             }
            
-        }
+        }*/
 
     }
 }
